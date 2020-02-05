@@ -14,14 +14,14 @@ let movieCollection = mongoose.Schema({
 });
 
 
-let Movies = mongoose.model( "movies", movieCollection );
+let Movie = mongoose.model( "movies", movieCollection );
 
-let movieCollection = {
+let movieList = {
     getAll : function() {
-        return Movies.find()
+        return Movie.find()
 
-        .then(Movies =>{
-            return Movies;
+        .then(movies =>{
+            return movies;
 
         })
         .catch( error => {
