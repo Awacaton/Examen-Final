@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
 
 app.get("/api/moviedex" , (req,res)=>{
 
-	MoviesList.getAll()
+	moviesList.getAll()
     .then(Movies =>{
 		return res.status(200).json(Movies);
     })
