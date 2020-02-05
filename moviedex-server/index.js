@@ -16,7 +16,53 @@ app.use(function(req, res, next) {
 	next();
 });
 
-/* Tu código va aquí */
+app.get("/api/moviedex" , (req,res)=>{
+
+	MovieColletion.getAll()
+    .then(MovieColletion =>{
+		return res.status(200).json(MovieColletion);
+    })
+    .catch( error => {
+        console.log(error);
+		return res.status(500).send("Error para mostrar peliculas");
+    });
+
+});
+
+
+app.post("/api/moviedex", jsonParser , (req,res) =>{
+
+	let titulo = req.body.film_ID;
+	let year = req.body.year;
+	let rating = req.body.rating;
+	
+	let nuevaPelicula =  { 
+		film_ID : uuid(),
+		film_title : title,
+		year : year,
+		rating : rating
+
+	}
+
+	MovieColletion.create(nuevaPelicula);
+	
+    .then(nuevaPelicula =>{
+		if(titulo != "" && year != "" && rating != ""){
+			return res.status(201).json(nuevaPelicula);
+
+		}else{
+			return  res.status(406).send("Falta algun elemento");
+
+		}
+    }).catch( error => {
+        console.log(error);
+		return res.status(500).send("Error para mostrar peliculas");
+    });
+
+
+});
+
+
 
 let server;
 
