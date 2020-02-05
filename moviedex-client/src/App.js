@@ -74,14 +74,14 @@ class App extends React.Component {
     return (
       <div>
  
-      <Route path="/movies" render={(props) => <Movies lista={this.state.movies}/>}/>
-      <div>
-        Film Title: <input type="text" />
-        Year: <input type="text" />
-        Rating: <input type="text" />
-        <button type="submit">submit</button>
+        <Route path="/movies" render={(props) => <Movies lista={this.state.movies}/>}/>
+        <div>
+          Film Title: <input type="text" />
+          Year: <input type="text" />
+          Rating: <input type="text" />
+          <button type="submit">submit</button>
 
-      </div>
+        </div>
       </div>
       
     )

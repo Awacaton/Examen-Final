@@ -18,9 +18,9 @@ app.use(function(req, res, next) {
 
 app.get("/api/moviedex" , (req,res)=>{
 
-	moviesList.getAll()
-    .then(Movies =>{
-		return res.status(200).json(Movies);
+	movieList.getAll()
+    .then(movies =>{
+		return res.status(200).json(movies);
     })
     .catch( error => {
         console.log(error);
@@ -32,7 +32,7 @@ app.get("/api/moviedex" , (req,res)=>{
 
 app.post("/api/moviedex", jsonParser , (req,res) =>{
 
-	let titulo = req.body.film_ID;
+	let title = req.body.film_title;
 	let year = req.body.year;
 	let rating = req.body.rating;
 	
@@ -45,9 +45,9 @@ app.post("/api/moviedex", jsonParser , (req,res) =>{
 	}
 
 	MovieColletion.create(nuevaPelicula)
-	.then(movie =>{
+	.then(nuevaPelicula =>{
 		if(titulo != "" && year != "" && rating != ""){
-			return res.status(201).json(movie);
+			return res.status(201).json(nuevaPelicula);
 
 		}else{
 			return  res.status(406).send("Falta algun elemento");
